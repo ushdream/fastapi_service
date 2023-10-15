@@ -1,5 +1,5 @@
 import logging
-import core.logger
+#import core.logger
 #logging.basicConfig(filename=log_file_name, level=logging.NOTSET, format=format_str, datefmt='%m/%d/%Y %I:%M:%S %p')
 
 import uvicorn
