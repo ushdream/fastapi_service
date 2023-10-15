@@ -1,10 +1,12 @@
 import logging
-logging.basicConfig(filename=log_file_name, level=logging.NOTSET, format=format_str, datefmt='%m/%d/%Y %I:%M:%S %p')
+import core.logger
+#logging.basicConfig(filename=log_file_name, level=logging.NOTSET, format=format_str, datefmt='%m/%d/%Y %I:%M:%S %p')
 
 import uvicorn
 from fastapi import FastAPI, Depends
 from fastapi.responses import ORJSONResponse, PlainTextResponse
 
+from core import config
 
 from api.v1 import base
 
