@@ -23,7 +23,11 @@ logging.info(f'\n_______________________\nFastAPI started\n_____________________
 app.include_router(base.api_router)
 logging.info(f'api_router included')
 
+print(f'PROJECT_HOST: {app_settings.PROJECT_HOST}')
+print(f'PROJECT_PORT: {app_settings.PROJECT_PORT}')
+
 if __name__ == '__main__':
+    print('__main__')
     print(f'PROJECT_HOST: {app_settings.PROJECT_HOST}')
     print(f'PROJECT_PORT: {app_settings.PROJECT_PORT}')
     uvicorn.run(
