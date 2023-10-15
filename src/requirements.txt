@@ -1,6 +1,7 @@
 fastapi==0.84.0
 orjson==3.8.0
-pydantic==1.10.2
+pydantic==2.4.1
+pydantic-settings==2.0.3
 uvicorn==0.18.3
 uvloop==0.17.0; sys_platform == "linux" or sys_platform == "darwin"  or sys_platform == "windows"
 SQLAlchemy==1.4.41
