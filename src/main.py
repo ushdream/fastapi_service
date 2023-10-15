@@ -24,6 +24,8 @@ app.include_router(base.api_router)
 logging.info(f'api_router included')
 
 if __name__ == '__main__':
+    print(f'PROJECT_HOST: {app_settings.PROJECT_HOST}')
+    print(f'PROJECT_PORT: {app_settings.PROJECT_PORT}')
     uvicorn.run(
         'main:app',
         host=app_settings.PROJECT_HOST,
