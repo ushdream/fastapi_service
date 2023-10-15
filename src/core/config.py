@@ -18,6 +18,8 @@ class AppSettings(BaseSettings):
     PROJECT_HOST: str = '0.0.0.0'
     PROJECT_PORT: int = 8000
 
+    echo_query: str = "select 1"
+
     class Config:
         env_file = '../.env'
 
