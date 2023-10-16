@@ -13,7 +13,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 class AppSettings(BaseSettings):
     app_title: str = "FastAPI exp app"
-    database_dsn: PostgresDsn = "postgresql+asyncpg://me:1111111@pg_02:5832/my"
+    database_dsn: PostgresDsn = "postgresql+asyncpg://me:1111111@pg_02:5432/my"
     BLACK_LIST: list[str] = []
     PROJECT_HOST: str = '0.0.0.0'
     PROJECT_PORT: int = 8000
