@@ -25,6 +25,7 @@ logging.info(f'api_router included')
 
 print(f'PROJECT_HOST: {app_settings.PROJECT_HOST}')
 print(f'PROJECT_PORT: {app_settings.PROJECT_PORT}')
+print(f'database_dsn: {app_settings.database_dsn}')
 
 if __name__ == '__main__':
     print('__main__')
