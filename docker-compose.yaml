@@ -26,5 +26,3 @@ services:
       - "8000:8000"
     environment:
       - DATABASE_DSN=postgresql+asyncpg://me:1111111@pg:5432/my
-
-
