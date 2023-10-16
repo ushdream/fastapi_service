@@ -1,0 +1,30 @@
+version: '3'
+
+networks:
+  ya_net:
+    driver: bridge
+
+services:
+  pg:
+    build:
+      context: .
+      dockerfile: Dockerfile-pg
+    networks:
+      - ya_net
+    ports:
+      - "5832:5432"
+
+  fapi:
+    build:
+      context: .
+      dockerfile: Dockerfile-fapi
+    depends_on:
+      - pg
+    networks:
+      - ya_net
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_DSN=postgresql+asyncpg://me:1111111@pg:5432/my
+
+
