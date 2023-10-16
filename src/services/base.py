@@ -1,11 +1,12 @@
 from abc import ABC
 import datetime
 import logging
-from typing import Any, Dict, Generic, List, Optional, Type, TypeVar, Union
+from typing import Any, List, Optional, Type, TypeVar
 from pydantic import BaseModel
 from models.base import Base
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, insert, update, func
+from sqlalchemy.sql import text
 
 ModelType = TypeVar("ModelType", bound=Base)
 UpdateSchemaType = TypeVar("UpdateSchemaType", bound=BaseModel)
