@@ -66,7 +66,27 @@ class RepositoryDB(Repository):
             result = False
             logging.info(f'CRUD: ping: False')
         return result
-
+    async def ping_all(self, db) -> dict:
+        print(f'pnig_all')
+        logging.info(f'ping all')
+        result = {}
+        begin = datetime.datetime.now()
+        try:
+            print(f'Call query')
+            q_result = await db.execute(statement=text('select 1'))
+            print(f'Query result: {q_result}')
+            end = datetime.datetime.now()
+            row = q_result.fetchone()
+            print(f'row: {row}')
+            if str(row[0]) == '1':
+                result['DB'] = (end - begin).total_seconds()
+            else:
+                result['DB'] = 'Unavailable'
+        except Exception as e:
+            print(f'ping exception')
+            logging.exception(f'Error: connecting to DB')
+            result['DB'] = 'Unavailable'
+        return result
 
     async def new_url(self, db: AsyncSession, data: dict):
         logging.info(f'CRUD: new_url')

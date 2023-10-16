@@ -71,7 +71,7 @@ async def new_url_list(
 
 
 @router.get(
-    "/ping",
+    "/ping_db",
     status_code=status.HTTP_201_CREATED,
     dependencies=[Depends(check_allowed_ip)],
     description='Check if the DB is working'
@@ -88,6 +88,22 @@ async def ping(db: AsyncSession = Depends(get_session)) -> dict:
             status_code=status.HTTP_503_SERVICE_UNAVAILABLE, detail="Data Base is unavailable"
         )
     return {'db_ready': db_ready}
+
+
+@router.get(
+    "/ping",
+    status_code=status.HTTP_201_CREATED,
+    dependencies=[Depends(check_allowed_ip)],
+    description='Check if the DB is working'
+)
+async def ping_all(db: AsyncSession = Depends(get_session)) -> dict:
+    """
+    Check if the DB is alive
+    :return: {'db_ready': db_ready}, db_ready is bool
+    """
+    readiness = await entity_crud.ping_all(db=db)
+
+    return readiness
 
 
 @router.get(
