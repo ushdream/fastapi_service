@@ -9,5 +9,5 @@ RUN git clone https://github.com/ushdream/fastapi_service.git /app
 RUN pip install --no-cache-dir --upgrade -r /app/src/requirements.txt
 
 EXPOSE 8200
-
-CMD alembic upgrade head && python3 src/main.py
+RUN echo "call alembic"
+CMD "alembic upgrade head && python3 src/main.py"
