@@ -18,15 +18,6 @@ config = context.config
 import os
 config.set_main_option('sqlalchemy.url', os.environ['DATABASE_DSN'])
 
-from src.models import Base
-
-target_metadata = Base.metadata
-print(f'target_metadata: {target_metadata}')
-
-# this is the Alembic Config object, which provides
-# access to the values within the .ini file in use.
-config = context.config
-
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.
 if config.config_file_name is not None:
@@ -36,6 +27,9 @@ if config.config_file_name is not None:
 # for 'autogenerate' support
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
+from src.models import Base
+
+target_metadata = Base.metadata
 
 # other values from the config, defined by the needs of env.py,
 # can be acquired:
@@ -56,7 +50,6 @@ def run_migrations_offline() -> None:
 
     """
     url = config.get_main_option("sqlalchemy.url")
-    print(f'url: {url}')
     context.configure(
         url=url,
         target_metadata=target_metadata,
@@ -85,10 +78,7 @@ async def run_async_migrations() -> None:
         config.get_section(config.config_ini_section, {}),
         prefix="sqlalchemy.",
         poolclass=pool.NullPool,
-        future=True,
     )
-
-
 
     async with connectable.connect() as connection:
         await connection.run_sync(do_run_migrations)
