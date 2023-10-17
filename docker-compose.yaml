@@ -14,7 +14,7 @@ services:
     networks:
       - ya_net
     ports:
-      - "5932:5432"
+      - "5132:5432"
     healthcheck:
       test: /usr/bin/pg_isready
       interval: 5s
