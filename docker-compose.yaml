@@ -19,7 +19,7 @@ services:
       test: /usr/bin/pg_isready
       interval: 5s
       timeout: 10s
-      retries: 120
+      retries: 10
 
   fapi:
     build:
