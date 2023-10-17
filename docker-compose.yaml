@@ -21,7 +21,8 @@ services:
       context: .
       dockerfile: Dockerfile-fapi
     depends_on:
-      - pg
+      pg:
+        condition: service_healthy
     networks:
       - ya_net
     ports:
