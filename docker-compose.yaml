@@ -1,5 +1,7 @@
 version: '3'
 
+# rev 1.
+
 networks:
   ya_net:
     driver: bridge
@@ -12,7 +14,7 @@ services:
     networks:
       - ya_net
     ports:
-      - "5832:5432"
+      - "5932:5432"
 
   fapi:
     build:
